@@ -5,13 +5,22 @@
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "none"
 		}
-	}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
+	"forwardPorts": [ 8000 ],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	"postCreateCommand": "pip install --upgrade pip && pip install --user -r requirements.txt && cd myblog && python manage.py migrate && python manage.py runserver",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"qwtel.sqlite-viewer"
+			]
+		}
+	}
 
 	// Configure tool-specific properties.
 	// "customizations": {},
